@@ -14,7 +14,10 @@ namespace :db do
     Rake::Task['db:reset'].invoke
     puts "Creating #{args[:count]} users"
     factory_names = FactoryGirl.factories.map {|f| f.name}
-    puts "Found factories: #{factory_names}"
+    puts "Found factories: #{factory_names.inspect}"
+    puts "SKIP_FACTORIES_WHEN_POPULATING: #{SKIP_FACTORIES_WHEN_POPULATING}"
+    factory_names = factory_names - SKIP_FACTORIES_WHEN_POPULATING
+
     models = factory_names.map{|n| FactoryGirl.build(n)}
     puts "#{models.size} factories, classes:"
     puts models.map{|m|m.class.name}.to_set.inspect
