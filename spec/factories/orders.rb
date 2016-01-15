@@ -23,5 +23,9 @@ FactoryGirl.define do
     placed_on { 3.days.ago}
     status :new
   end
+  factory :orders_with_price, class: Order do
+    placed_on {7.days.ago}
+    status :new
+    price '10.6'
+  end
 end
-
