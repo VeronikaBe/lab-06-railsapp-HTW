@@ -9,6 +9,38 @@
   <strong>Discount:</strong>
   <%= @customer.discount %>
 </p>
+
+<p>
+  <strong>Orders:</strong>
+  <table>
+    <tr>
+      <th>ID &nbsp; &nbsp; &nbsp;</th>
+      <th>Placed On &nbsp; &nbsp; &nbsp;</th>
+      <th>Status  &nbsp; &nbsp; &nbsp;</th>
+      <th>Price</th>
+    </tr>
+    <% @customer.orders.each do |order| %>
+    <tr>
+      <td> <%=  order.id %></td>
+      <td> <%=  order.placed_on %></td>
+      <td> <%=  order.status %></td>
+      <td> <%=  order.price %></td>
+    </tr>
+    <% end %>
+  </table>
+</p>
+<p>
+  <strong>Total:</strong>
+  <% @sum = 0 %>
+  <% @customer.orders.each do |order| %>
+  <% if order.price != nil %>
+  <% @sum = (@sum + order.price)  %>
+  <% end %>
+  <% end %>
+  <%= @sum %>
+</p>
+
+
 <%= link_to 'New Order', new_order_path(customer: @customer) %>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
