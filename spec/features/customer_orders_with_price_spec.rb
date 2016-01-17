@@ -34,9 +34,8 @@ describe "the customer page with total order price", :type => :feature do
     visit '/customers/'+@customer.id.to_s
     expect(page).to have_content "Daisy"
     expect(page).to have_content "new"
-    expect(page).to have_content "10.6"
+    expect(page).to have_content "10.6", count: 3
     expect(page).to have_content "Total: "
     expect(page).to have_content "31.8"
   end
-
 end
