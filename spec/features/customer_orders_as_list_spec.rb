@@ -18,12 +18,15 @@ describe "the customer page with order list", :type => :feature do
   it "get an order" do
     @order = Order.find(@id)
     expect(@order.status).to eq "waiting"
+
   end
+
   it "get multiple orders" do
     @orders = Customer.where(name: "Dagobert").first.orders
     expect(@orders.first.id).to eq 1
     expect(@orders.first.customer.name).to eq "Dagobert"
   end
+
   it "number of orders" do
     @orders = Customer.where(name: "Dagobert").first.orders
     expect(@orders.size).to eq 5
@@ -32,15 +35,6 @@ describe "the customer page with order list", :type => :feature do
   it "orders on customer page" do
     visit '/customers/'+@customer.id.to_s
     expect(page).to have_content "Dagobert"
-    expect(page).to have_content "waiting"
+    expect(page).to have_content "waiting", count: 5
   end
-  # it "order has the right date" do
-  #   expect (@order.placed_on.to_s).to eq (3.days.ago.to_s)
-  # end
-  # it "customer's orders on customer page" do
-  #   visit '/customers/'+@customer.id.to_s
-  #   @orders = @customer.orders
-  #   expect(page).to have_content "waiting"
-  # end
-
 end
