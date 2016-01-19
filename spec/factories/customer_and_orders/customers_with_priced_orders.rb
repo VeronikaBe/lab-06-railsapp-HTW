@@ -18,7 +18,7 @@ FactoryGirl.define do
 
 
   factory :order_associated_and_priced, class: Order do
-    # sequence(:price) { |n| PRICES[n % PRICES.size] }
+    sequence(:price) { |n| PRICES[n % PRICES.size] }
     placed_on { 3.days.ago}
     status :new
   end
