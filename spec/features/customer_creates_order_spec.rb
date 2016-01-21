@@ -9,9 +9,9 @@ describe "customer page", :type => :feature do
     visit "/customers/" +@customer.id.to_s
     expect(page).to have_link 'New Order'
   end
+
   it "initializes new order correctly" do
-    @link = "/customers/" +@customer.id.to_s
-    visit   @link
+    visit "/customers/" +@customer.id.to_s
     click_link 'New Order'
     fill_in 'Status', with: :new
     click_button 'Create Order'
