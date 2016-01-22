@@ -4,7 +4,17 @@ class PumpkinsController < ApplicationController
   # GET /pumpkins
   # GET /pumpkins.json
   def index
-    @pumpkins = Pumpkin.all.order(params[:sort])
+    if params[:sort]== 'name'
+      @pumpkins = Pumpkin.all.sort_by {|pumpkin| pumpkin.name.downcase}
+    elsif params[:sort] == 'color'
+      @pumpkins = Pumpkin.all.sort_by {|pumpkin| pumpkin.color.downcase}
+    elsif params[:sort] == 'size'
+      @pumpkins = Pumpkin.all.sort_by {|pumpkin| pumpkin.size.downcase}
+    elsif params[:sort] == 'price'
+      @pumpkins = Pumpkin.all.sort_by {|pumpkin| pumpkin.price}
+    else
+      @pumpkins = Pumpkin.all.sort_by {|pumpkin| pumpkin.name.downcase}
+  end
   end
 
   # GET /pumpkins/1
