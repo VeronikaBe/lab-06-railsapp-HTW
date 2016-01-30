@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pumpkins#index'
+  # root 'pumpkins#index'
 
+  scope "(:locale)", :locale => /en|de|fr/ do
+     root :to => 'customers#index'
+     get "customers/index"
+   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

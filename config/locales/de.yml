@@ -1,0 +1,13 @@
+de:
+   listing_customers:
+     title: "Kundenliste"
+     new_customer: "Neuer Kunde"
+     table:
+       name: "Name"
+       discount: "Rabatt"
+
+     links:
+       show: "anzeigen"
+       edit: "bearbeiten"
+       destroy: "löschen"
+       confirm: "Wollen Sie den Kunden wirklich löschen?"

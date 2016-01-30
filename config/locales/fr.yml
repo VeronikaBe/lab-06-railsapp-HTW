@@ -1,0 +1,13 @@
+fr:
+   listing_customers:
+     title: "Liste de clients"
+     new_customer: "Nouveau client"
+     table:
+       name: "Nom"
+       discount: "Rabais"
+
+     links:
+       show: "afficher"
+       edit: "adapter"
+       destroy: "effacer"
+       confirm: "Vous êtes sûr?"
