@@ -15,11 +15,11 @@ FactoryGirl.define do
     price '13.0'
   end
 
-  factory :line_item_1, class: LineItem do
+  factory :line_item_1, class: Lineitem do
   	association :pumpkin, factory:  :pumpkin1
   	amount 2
   end
-  factory :line_item_2, class: LineItem do
+  factory :line_item_2, class: Lineitem do
   	association :pumpkin, factory:  :pumpkin2
   	amount 1
   end

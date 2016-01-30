@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @lineitems = Lineitem.all
   end
 
   # GET /orders/new

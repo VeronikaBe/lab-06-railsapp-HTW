@@ -15,5 +15,33 @@
   <%= @order.status %>
 </p>
 
+<table>
+  <thead>
+    <col width="130">
+    <col width="70">
+    <col width="40">
+    <col width="40">
+
+    <tr>
+        <th> Type </th>
+        <th>  Color </th>
+        <th>Size </th>
+        <th>Price</th>
+        <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lineitems.each do |lineitem| %>
+      <tr>
+        <td><%= lineitem.pumpkin.name %></td>
+        <td><%= lineitem.pumpkin.color %></td>
+        <td><%= lineitem.pumpkin.size %></td>
+        <td><%= lineitem.pumpkin.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
