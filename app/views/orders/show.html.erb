@@ -16,28 +16,31 @@
 </p>
 
 <table>
+  <col width="130">
+  <col width="70">
+  <col width="40">
+  <col width="50">
+  <col width="50">
   <thead>
-    <col width="130">
-    <col width="70">
-    <col width="40">
-    <col width="40">
-
     <tr>
         <th> Type </th>
         <th>  Color </th>
         <th>Size </th>
         <th>Price</th>
-        <th colspan="3"></th>
+        <th>Amount</th>
+        <th colspan="5"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @lineitems.each do |lineitem| %>
+    <% @order.lineitems.each do |lineitem| %>
       <tr>
         <td><%= lineitem.pumpkin.name %></td>
         <td><%= lineitem.pumpkin.color %></td>
         <td><%= lineitem.pumpkin.size %></td>
         <td><%= lineitem.pumpkin.price %></td>
+        <td><%= lineitem.amount %></td>
+        <td colspan="5"></td>
       </tr>
     <% end %>
   </tbody>

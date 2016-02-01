@@ -4,8 +4,10 @@ describe "the order page", :type => :feature do
   before :each do
     @order = create(:order_with_line_items)
     @id = @order.id
-    @line_item_1 = @order.lineitems.first
-    @line_item_2 = @order.lineitems.second
+
+    @lineitems = @order.lineitems
+    @line_item_1 = @lineitems.first
+    @line_item_2 = @lineitems.second
   end
 
   it "is visited" do
@@ -35,8 +37,24 @@ describe "the order page", :type => :feature do
     expect(page).to have_content '7.0'
   end
 
+  it "shows the order's second pumpkin" do
+    visit '/orders/' + @id.to_s
+    @pumpkin_2 = @line_item_2.pumpkin
+
+    expect(@pumpkin_2.name).to eq 'Plain Pumpkin 2'
+    expect(@pumpkin_2.color).to eq 'sparkled'
+    expect(@pumpkin_2.size).to eq 'l'
+    expect(@pumpkin_2.price) == '7.0'
+
+    expect(page).to have_content 'Plain Pumpkin 1'
+    expect(page).to have_content 'sparkled'
+    expect(page).to have_content 'l'
+    expect(page).to have_content '13.0'
+  end
+
   it "shows the lineitem's amount" do
     visit '/orders/' + @id.to_s
+    expect( @lineitems.length).to eq 2
 
     expect(@line_item_1.amount).to eq 2
     expect(page).to have_content 2
@@ -44,5 +62,4 @@ describe "the order page", :type => :feature do
     expect(@line_item_2.amount).to eq 1
     expect(page).to have_content 1
   end
-
 end

@@ -2,6 +2,10 @@
 
 FactoryGirl.define do
 
+  SKIP_FACTORIES_WHEN_POPULATING << :line_item_1
+  SKIP_FACTORIES_WHEN_POPULATING << :line_item_2
+  SKIP_FACTORIES_WHEN_POPULATING << :customer
+
   factory :pumpkin1, class: Pumpkin do
   	name 'Plain Pumpkin 1'
     color 'sparkled'
@@ -29,9 +33,9 @@ FactoryGirl.define do
     placed_on { 3.days.ago}
     price 10
     status :new
-    after (:create) do | order |
-    	create(:line_item_1, order: order)
-    	create(:line_item_2, order: order)
+    after (:build) do | order |
+    	create_list(:line_item_1, 1, order: order)
+    	create_list(:line_item_2, 1, order: order)
     end
   end
 end
