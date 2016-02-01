@@ -1,4 +1,3 @@
-#order_with_line_items
 
 FactoryGirl.define do
 
